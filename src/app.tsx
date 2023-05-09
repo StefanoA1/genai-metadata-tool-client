@@ -33,6 +33,12 @@ export const App: FunctionComponent = () => {
     onClick: () => console.log('generateButtonProps')
   };
 
+  const exportButtonProps: ButtonProps = {
+    label: 'Export to AirTable',
+    // eslint-disable-next-line no-console
+    onClick: () => console.log('exportButtonProps')
+  };
+
   // ----- Basic section -----
 
   // upper section
@@ -119,6 +125,7 @@ export const App: FunctionComponent = () => {
           <div />
         </div>
       ) : null}
+      <Button {...exportButtonProps} />
       <span>{videoUrl}</span>
     </div>
   );
