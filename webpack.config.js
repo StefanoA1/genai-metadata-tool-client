@@ -10,7 +10,8 @@ const {NODE_ENV} = process.env;
 const mode = NODE_ENV === 'development' ? 'development' : 'production';
 
 const contenthash = '[local]-[contenthash:base64:5]';
-const PATH_PREFIX = mode === 'development' ? 'genai/' : '';
+// const PATH_PREFIX = mode === 'development' ? 'genai/' : '';
+const PATH_PREFIX = '';
 
 const getConfig = () => {
   return {
