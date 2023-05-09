@@ -16,6 +16,42 @@
 
 /* basic section */
 .basicSection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.basicLowerSection {
+  margin-top: 20px;
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.imageWrapper {
+  max-width: 100%;
+  flex-basis: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.contentImage {
+  /* max-width: 100%; */
+  width: 256px;
+  height: 256px;
+  border-radius: 15%;
+  align-self: center;
+}
+
+.basicLowerSectionContent {
+  flex-direction: column;
+  display: flex;
+  flex: 1;
+  margin-left: 30px;
+}
+
+/* basic section */
+.detailedSummarySection {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 }

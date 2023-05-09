@@ -2,9 +2,16 @@
   font-family: Gilroy;
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
   color: #1D1D2B;
   padding-top: 20px;
   padding-bottom: 20px;
   align-self: center;
+}
+
+.mainTitle {
+  font-size: 20px;
+}
+
+.regularTitle {
+  font-size: 20px;
 }
