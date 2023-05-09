@@ -1,5 +1,4 @@
 import React, {type FunctionComponent, useCallback, useState} from 'react';
-
 import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
 import InputText from '@coorpacademy/components/es/atom/input-text';
 import {AppTitle} from './components/app-title';
@@ -24,7 +23,7 @@ export const App: FunctionComponent = () => {
     onChange: onUrlInput,
     title: 'Video url',
     placeholder: 'some.video.url/example123',
-    autoFocus: true
+    value: 'https://youtu.be/TATblk1LUQI'
   };
 
   const generateButtonProps: ButtonProps = {
@@ -87,9 +86,13 @@ export const App: FunctionComponent = () => {
   return (
     <div className={style.appContainer}>
       <AppTitle title={'Video metadata enhancement tool'} isBigTitle />
-      <div className={style.urlInputWrapper}>
-        <InputText {...urlInputProps} />
-        <Button {...generateButtonProps} />
+      <div className={style.urlInputContainer}>
+        <div className={style.inputWrapper}>
+          <InputText {...urlInputProps} />
+        </div>
+        <div className={style.generateButtonWrapper}>
+          <Button {...generateButtonProps} />
+        </div>
       </div>
       {result ? (
         <div className={style.basicSection}>

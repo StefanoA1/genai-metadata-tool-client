@@ -6,12 +6,19 @@
 
 /* url */
 
-.urlInputWrapper {
+.urlInputContainer {
   display: flex;
 }
 
-.urlInputWrapper div:first-of-type {
-  margin-right: 50px;
+.inputWrapper {
+  display: flex;
+  flex-basis: 70%;
+}
+
+.generateButtonWrapper {
+  display: flex;
+  flex: 1;
+  justify-content: end;
 }
 
 /* basic section */
