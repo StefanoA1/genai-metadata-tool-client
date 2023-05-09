@@ -1,6 +1,18 @@
 # genai-metadata-tool-client
+Install and test app state (lint + typecheck):
+
+```bash
+  nvm use
+  npm i
+  npm run test
 ```
-npm i
-npm run test
-npm start 
+
+To run locally:
+```bash
+  npm start
+```
+
+To build for prod:
+```bash
+  npm run build
 ```
