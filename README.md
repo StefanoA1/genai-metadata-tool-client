@@ -2,5 +2,5 @@
 ```
 npm i
 npm run test
-npm run start:front 
+npm start 
 ```
