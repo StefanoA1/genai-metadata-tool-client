@@ -19,3 +19,4 @@ ava.config.js
 nyc.config.js
 webpack.config.js
 **/*.disabled
+dist
