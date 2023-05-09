@@ -1,3 +1,21 @@
 .appContainer {
   display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* url */
+
+.urlInputWrapper {
+  display: flex;
+}
+
+.urlInputWrapper div:first-of-type {
+  margin-right: 50px;
+}
+
+/* basic section */
+.basicSection {
+  display: flex;
+  flex-direction: column;
 }
