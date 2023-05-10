@@ -27,7 +27,7 @@ export const App: FunctionComponent = () => {
     onChange: onUrlInput,
     title: 'Video url',
     placeholder: 'some.video.url/example123',
-    value: 'https://youtu.be/TATblk1LUQI'
+    value: 'https://www.youtube.com/watch?v=D8gpV-xjECM%26ab_channel=Blinkist'
   };
 
   const generateButtonProps: ButtonProps = {
