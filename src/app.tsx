@@ -130,16 +130,14 @@ export const App: FunctionComponent = () => {
       </div>
       {result ? (
         <div className={style.basicSection}>
-          <div>
-            <YoutubePreview videoUrl={urlInputProps.value} />
-          </div>
+          <YoutubePreview videoUrl={urlInputProps.value} />
           <div>
             <InputText {...titleProps} />
           </div>
           <div className={style.basicLowerSection}>
             <div className={style.imageContainer}>
               <img
-                src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-tci3RizVB8h2nVnLMmNOrgTo/user-6C1v0WlHzfz1sG44OIRldzPm/img-WexNaUqLzdZ0XfyohGtUDEP6.png?st=2023-05-10T11%3A50%3A27Z&se=2023-05-10T13%3A50%3A27Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-05-10T02%3A35%3A46Z&ske=2023-05-11T02%3A35%3A46Z&sks=b&skv=2021-08-06&sig=tV95krjahS%2B%2BQJnFD9aSCqcRMME11g6TQAtIouX7szc%3D"
+                src="https://placehold.co/256x256/png"
                 alt="your image description"
                 className={style.contentImage}
               />

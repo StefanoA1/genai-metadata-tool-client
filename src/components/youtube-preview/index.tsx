@@ -1,5 +1,7 @@
 import React from 'react';
 import YouTube from 'react-youtube';
+import {AppTitle} from '../app-title';
+import style from './style.css';
 
 interface YouTubePreviewProps {
   videoUrl: string;
@@ -15,9 +17,9 @@ export const YoutubePreview = (props: YouTubePreviewProps): JSX.Element => {
   const {videoUrl} = props;
   const videoId = extractVideoId(videoUrl);
   return videoUrl ? (
-    <div>
-      <h3>YouTube Video Preview</h3>
-      <YouTube videoId={videoId} />
+    <div className={style.youtubePreviewContainer}>
+      <AppTitle title={'YouTube Video Preview'} />
+      <YouTube videoId={videoId} iframeClassName={style.youtubeIframe} />
     </div>
   ) : null;
 };
