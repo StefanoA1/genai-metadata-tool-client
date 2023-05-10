@@ -8,6 +8,7 @@ import type {ButtonProps} from './components/button/types';
 import {Glossary} from './components/glossary';
 import {InputText, InputTextProps} from './components/input-text';
 import {YoutubePreview} from './components/youtube-preview';
+import {_fetch} from './api';
 
 // export type AppProps = {
 //   test?: string;
@@ -26,13 +27,25 @@ export const App: FunctionComponent = () => {
     onChange: onUrlInput,
     title: 'Video url',
     placeholder: 'some.video.url/example123',
-    value: 'https://youtu.be/TATblk1LUQI'
+    value: 'https://www.youtube.com/watch?v=D8gpV-xjECM%26ab_channel=Blinkist'
   };
 
   const generateButtonProps: ButtonProps = {
     label: 'Generate',
-    // eslint-disable-next-line no-console
-    onClick: () => console.log('generateButtonProps')
+    onClick: async () => {
+      // eslint-disable-next-line no-console
+      console.log('videoUrl:', urlInputProps.value);
+      try {
+        const response = await _fetch(
+          `https://genai-metadata-back-production.up.railway.app/videos?video_url=${urlInputProps.value}`
+        );
+        // eslint-disable-next-line no-console
+        console.log('response:', response);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Failed to fetch the resource:', error);
+      }
+    }
   };
 
   const exportButtonProps: ButtonProps = {

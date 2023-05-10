@@ -22,6 +22,8 @@ export class ResponseError extends Error {
 export const toJSON = async (response: Response_): Promise<unknown> => {
   if (!response.ok) {
     const body = await response.text();
+    // eslint-disable-next-line no-console
+    console.log(body);
     throw new ResponseError(response.status, response.statusText, body);
   }
 
@@ -34,10 +36,11 @@ export const toJSON = async (response: Response_): Promise<unknown> => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const _fetch = async (baseUrl: string): Promise<Record<string, any>> => {
+  // eslint-disable-next-line no-console
+  console.log('fetch');
   return pPipe(toJSON)(
     await unfetch(baseUrl, {
       headers: {
-        // Authorization: authorization,
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json'
       }
