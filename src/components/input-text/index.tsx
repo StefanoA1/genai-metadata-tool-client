@@ -8,7 +8,7 @@ import style from './style.css';
 export type InputTextProps = {
   autoFocus?: boolean;
   title: string;
-  placeholder: string;
+  placeholder?: string;
   defaultValue?: string;
   disabled?: boolean;
   value: string;
