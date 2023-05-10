@@ -1,4 +1,5 @@
 .glossaryContainer {
+  margin-bottom: 20px;
   display: flex;
   overflow-x: auto;
   box-shadow: -8px 0 4px -2px rgba(65, 114, 159, 0.05), 8px 0px 4px -2px rgba(65, 114, 159,0.05);

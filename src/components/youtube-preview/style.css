@@ -1,0 +1,14 @@
+.youtubePreviewContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.youtubeIframe {
+  border-radius: 15px;
+}
+
+.youtubePreviewContainer [class*="toolTitle"] + div {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+}
