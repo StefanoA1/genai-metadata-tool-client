@@ -17,5 +17,5 @@
 
 .regularTitle {
   font-size: 16px;
-  align-self: left;
+  align-self: flex-start;
 }
