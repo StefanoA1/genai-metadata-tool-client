@@ -10,7 +10,8 @@
     "README.md"
   ],
   "scripts": {
-    "start": "NODE_ENV=${NODE_ENV:=development} webpack serve",
+    "start": "NODE_ENV=${NODE_ENV:=development} webpack serve --host 0.0.0.0 --port ${PORT}",
+    "start:dev": "NODE_ENV=${NODE_ENV:=development} webpack serve",
     "build:webpack": "NODE_ENV=${NODE_ENV:-development} webpack",
     "build": "npm run build:webpack",
     "clean": "rm -rf es",
