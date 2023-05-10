@@ -4,16 +4,19 @@ import InputText from '@coorpacademy/components/es/atom/input-text';
 import map from 'lodash/fp/map';
 import style from './style.css';
 
+type GlossaryEntry = {name: string; def: string};
+
 export type GlossaryProps = {
-  definitions: [string, string][];
+  definitions: GlossaryEntry[];
 };
 
 const INPUT_FIELD_THEME = 'coorpmanager';
 
+// eslint-disable-next-line react/prop-types
 export const Glossary: FunctionComponent<GlossaryProps> = ({definitions = []}) => {
   const descriptions = useMemo(
     () =>
-      map(([entry, definition]) => {
+      map(({name: entry, def: definition}: GlossaryEntry) => {
         const entryProps = {
           theme: INPUT_FIELD_THEME,
           disabled: true,

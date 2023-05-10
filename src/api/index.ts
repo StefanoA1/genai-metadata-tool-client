@@ -56,7 +56,6 @@ export const toJSON = async (response: Response_): Promise<ResponseType> => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const _fetch = async (baseUrl: string): Promise<ResponseType> => {
   return pPipe(toJSON)(
     await unfetch(baseUrl, {
