@@ -1,6 +1,7 @@
 import React, {type FunctionComponent, useCallback, useState} from 'react';
 import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
 import InputText from '@coorpacademy/components/es/atom/input-text';
+import {exportContentToJson} from '../utils/export';
 import {AppTitle} from './components/app-title';
 import style from './app-style.css';
 import Button from './components/button';
@@ -30,6 +31,12 @@ export const App: FunctionComponent = () => {
     label: 'Generate',
     // eslint-disable-next-line no-console
     onClick: () => console.log('generateButtonProps')
+  };
+
+  const exportButtonProps: ButtonProps = {
+    label: 'Export to AirTable',
+
+    onClick: () => exportContentToJson()
   };
 
   // ----- Basic section -----
@@ -122,6 +129,7 @@ export const App: FunctionComponent = () => {
           <div />
         </div>
       ) : null}
+      <Button {...exportButtonProps} />
       <span>{videoUrl}</span>
     </div>
   );
