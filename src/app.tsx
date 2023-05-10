@@ -9,6 +9,7 @@ import {Glossary} from './components/glossary';
 import {InputText, InputTextProps} from './components/input-text';
 import {YoutubePreview} from './components/youtube-preview';
 import {_fetch} from './api';
+import {TitleWithList} from './components/title-with-list';
 
 // export type AppProps = {
 //   test?: string;
@@ -19,7 +20,7 @@ const INPUT_FIELD_THEME = 'coorpmanager';
 export const App: FunctionComponent = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [videoUrl, setVideoUrl] = useState<string>('');
-  const result = true;
+  const result = false;
   const onUrlInput = useCallback((value: string) => setVideoUrl(value), []);
 
   // ----- url -----
@@ -122,6 +123,26 @@ export const App: FunctionComponent = () => {
       'Quiz:\n\n1. Knowing math is not necessary for machine learning.\n- False. Knowing the underlying math provides a better understanding of how the algorithms work and makes it easier to solve problems. Plus, math can add to the excitement of the topic.\n- Fun fact: Alan Turing was known for creating the concept of the Universal Machine, which was a mathematical notion that laid the foundation for computer science.\n\n'
   };
 
+  const faqProps = {
+    theme: INPUT_FIELD_THEME,
+    disabled: true,
+    // onChange: onUrlInput,
+    title: 'FAQ',
+    // placeholder: 'Quiz ideas',
+    value:
+      'Quiz:\n\n1. Knowing math is not necessary for machine learning.\n- False. Knowing the underlying math provides a better understanding of how the algorithms work and makes it easier to solve problems. Plus, math can add to the excitement of the topic.\n- Fun fact: Alan Turing was known for creating the concept of the Universal Machine, which was a mathematical notion that laid the foundation for computer science.\n\n'
+  };
+
+  const funFactsProps = {
+    theme: INPUT_FIELD_THEME,
+    disabled: true,
+    // onChange: onUrlInput,
+    title: 'Fun Facts',
+    // placeholder: 'Quiz ideas',
+    value:
+      '1. Benjamin Franklin once said, "A small leak will sink a great ship." This applies to habits as well, as small, seemingly insignificant behaviors can add up over time and greatly impact our lives.\n\n2. According to a study, people who kept a food journal lost twice as much weight as those who didn\'t. This shows the power of keeping track of our habits and behaviors to improve them.\n\n3. The "mere-exposure effect" suggests that the more we are exposed to something, the more we like it. Applying this to habits, the more we expose ourselves to good habits, the more likely we are to enjoy and continue them.'
+  };
+
   // const keyPhrasesProps: InputTextProps = {
   //   disabled: true,
   //   // onChange: onUrlInput,
@@ -141,9 +162,9 @@ export const App: FunctionComponent = () => {
           <Button {...generateButtonProps} />
         </div>
       </div>
+      <YoutubePreview videoUrl={urlInputProps.value} />
       {result ? (
         <div className={style.basicSection}>
-          <YoutubePreview videoUrl={urlInputProps.value} />
           <div>
             <InputText {...titleProps} />
           </div>
@@ -172,9 +193,23 @@ export const App: FunctionComponent = () => {
             <InputTextArea {...assessmentsProps} />
           </div>
 
+          <div className={style.faqContainer}>
+            <InputTextArea {...faqProps} />
+          </div>
+
+          <div className={style.funFactsContainer}>
+            <InputTextArea {...funFactsProps} />
+          </div>
+
           {/* <div className={style.keyPhrasesContainer}>
             <InputTextArea {...followUpsProps} />
           </div> */}
+
+          <TitleWithList title={'Acquired Skills'} list={['1st kp', '1st kp']} isSimpleText />
+
+          <TitleWithList title={'Key Phrases'} list={['1st kp', '1st kp']} />
+
+          <TitleWithList title={'Prerequisites'} list={['1st kp', '1st kp']} />
 
           <AppTitle title={'Glossary'} />
           <Glossary
@@ -187,11 +222,15 @@ export const App: FunctionComponent = () => {
             ]}
           />
           <div />
+          <div className={style.exportButtonContainer}>
+            <Button {...exportButtonProps} />
+          </div>
         </div>
-      ) : null}
-      <div className={style.exportButtonContainer}>
-        <Button {...exportButtonProps} />
-      </div>
+      ) : (
+        <div className={style.spinnerContainer}>
+          <div className={style.spinner} />
+        </div>
+      )}
     </div>
   );
 };
