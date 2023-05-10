@@ -15,6 +15,7 @@ const PATH_PREFIX = '';
 
 const getConfig = () => {
   return {
+    API_YOUTUBE_KEY: process.env.API_YOUTUBE_KEY,
     API_BASE_URL: 'http://localhost:7004', // put your localhost api URL or prod URL here, when building the app in dev mode
     // MEDIA_API_URL: 'https://api-staging.coorpacademy.com/api-service/medias',
     APP_BASE_URL: process.env.NGROK_ID

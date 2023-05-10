@@ -8,6 +8,11 @@ import Button from './components/button';
 import type {ButtonProps} from './components/button/types';
 import {Glossary} from './components/glossary';
 import {InputText, InputTextProps} from './components/input-text';
+import {YoutubePreview} from './components/youtube-preview';
+
+// export type AppProps = {
+//   test?: string;
+// };
 
 const INPUT_FIELD_THEME = 'coorpmanager';
 
@@ -117,6 +122,10 @@ export const App: FunctionComponent = () => {
       </div>
       {result ? (
         <div className={style.basicSection}>
+          <div>
+            <h1>YouTube Video Preview</h1>
+            <YoutubePreview videoUrl="https://youtu.be/TATblk1LUQI" />
+          </div>
           <div>
             <InputText {...titleProps} />
           </div>
