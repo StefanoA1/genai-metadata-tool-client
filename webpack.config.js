@@ -50,10 +50,7 @@ module.exports = {
   },
   resolve: {
     // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['.ts', '.tsx', '.wasm', '.mjs', '.js', '.json', 'html'],
-    alias: {
-      '@coorpacademy/components/lib': '@coorpacademy/components/es'
-    }
+    extensions: ['.ts', '.tsx', '.wasm', '.mjs', '.js', '.json', 'html']
   },
   devtool: mode === 'development' ? 'eval-cheap-module-source-map' : 'nosources-source-map',
   module: {

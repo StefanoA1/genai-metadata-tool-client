@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useMemo} from 'react';
-import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
 import map from 'lodash/fp/map';
+import {InputTextarea as InputTextArea} from '../input-textarea';
 import {InputText} from '../input-text';
 import {AppTitle} from '../app-title';
 import style from './style.css';

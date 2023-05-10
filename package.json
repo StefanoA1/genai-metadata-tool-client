@@ -28,7 +28,6 @@
   ],
   "author": "Stéfano Acosta",
   "dependencies": {
-    "@coorpacademy/components": "^11.14.16",
     "@coorpacademy/css-modules-require-hook": "^3.0.0",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
