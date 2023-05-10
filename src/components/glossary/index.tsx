@@ -1,7 +1,9 @@
 import React, {FunctionComponent, useMemo} from 'react';
+import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
+import InputText from '@coorpacademy/components/es/atom/input-text';
 import map from 'lodash/fp/map';
-import {InputText} from '../input-text';
-import {InputTextarea as InputTextArea} from '../input-textarea';
+// import {InputText} from '../input-text';
+// import {InputTextarea as InputTextArea} from '../input-textarea';
 import style from './style.css';
 
 type GlossaryEntry = {name: string; def: string};
