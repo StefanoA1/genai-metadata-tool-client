@@ -2,6 +2,7 @@ import React, {type FunctionComponent, useCallback, useState} from 'react';
 
 import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
 import InputText from '@coorpacademy/components/es/atom/input-text';
+import {exportContentToJson} from '../utils/export';
 import {AppTitle} from './components/app-title';
 import style from './app-style.css';
 import Button from './components/button';
@@ -35,8 +36,8 @@ export const App: FunctionComponent = () => {
 
   const exportButtonProps: ButtonProps = {
     label: 'Export to AirTable',
-    // eslint-disable-next-line no-console
-    onClick: () => console.log('exportButtonProps')
+
+    onClick: () => exportContentToJson()
   };
 
   // ----- Basic section -----
