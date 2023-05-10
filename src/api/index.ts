@@ -41,7 +41,6 @@ export const _fetch = async (baseUrl: string): Promise<Record<string, any>> => {
   return pPipe(toJSON)(
     await unfetch(baseUrl, {
       headers: {
-        // Authorization: 'Bearer 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',
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json'
       }
