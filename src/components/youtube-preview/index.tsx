@@ -21,5 +21,3 @@ export const YoutubePreview = (props: YouTubePreviewProps): JSX.Element => {
     </div>
   ) : null;
 };
-
-export default YoutubePreview;
