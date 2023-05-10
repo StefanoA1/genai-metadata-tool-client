@@ -14,11 +14,12 @@ const extractVideoId = (url: string): string => {
 export const YoutubePreview = (props: YouTubePreviewProps): JSX.Element => {
   const {videoUrl} = props;
   const videoId = extractVideoId(videoUrl);
-  return (
+  return videoUrl ? (
     <div>
+      <h3>YouTube Video Preview</h3>
       <YouTube videoId={videoId} />
     </div>
-  );
+  ) : null;
 };
 
 export default YoutubePreview;

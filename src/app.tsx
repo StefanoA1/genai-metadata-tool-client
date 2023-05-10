@@ -37,8 +37,7 @@ export const App: FunctionComponent = () => {
   };
 
   const exportButtonProps: ButtonProps = {
-    label: 'Export to AirTable',
-
+    label: 'Export',
     onClick: () => exportContentToJson()
   };
 
@@ -123,8 +122,7 @@ export const App: FunctionComponent = () => {
       {result ? (
         <div className={style.basicSection}>
           <div>
-            <h1>YouTube Video Preview</h1>
-            <YoutubePreview videoUrl="https://youtu.be/TATblk1LUQI" />
+            <YoutubePreview videoUrl={urlInputProps.value} />
           </div>
           <div>
             <InputText {...titleProps} />
