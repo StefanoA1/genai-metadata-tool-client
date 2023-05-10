@@ -56,9 +56,18 @@
   margin-left: 30px;
 }
 
+.basicLowerSectionContent :first-child {
+  margin-bottom: 20px;
+}
+
 /* basic section */
 .detailedSummarySection {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
+}
+
+.exportButtonWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

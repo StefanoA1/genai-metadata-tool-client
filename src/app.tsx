@@ -9,13 +9,10 @@ import type {ButtonProps} from './components/button/types';
 import {Glossary} from './components/glossary';
 import {InputText} from './components/input-text';
 
-// export type AppProps = {
-//   test?: string;
-// };
-
 const INPUT_FIELD_THEME = 'coorpmanager';
 
 export const App: FunctionComponent = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [videoUrl, setVideoUrl] = useState<string>('');
   const result = true;
   const onUrlInput = useCallback((value: string) => setVideoUrl(value), []);
@@ -138,8 +135,9 @@ export const App: FunctionComponent = () => {
           <div />
         </div>
       ) : null}
-      <Button {...exportButtonProps} />
-      <span>{videoUrl}</span>
+      <div className={style.exportButtonWrapper}>
+        <Button {...exportButtonProps} />
+      </div>
     </div>
   );
 };
