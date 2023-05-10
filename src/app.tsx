@@ -1,6 +1,8 @@
+/* eslint-disable no-nested-ternary */
 import React, {type FunctionComponent, useCallback, useState} from 'react';
 import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
-// import classnames from 'classnames';
+import classnames from 'classnames';
+import get from 'lodash/fp/get';
 import {exportContentToJson} from '../utils/export';
 import {AppTitle} from './components/app-title';
 import style from './app-style.css';
@@ -9,18 +11,15 @@ import type {ButtonProps} from './components/button/types';
 import {Glossary} from './components/glossary';
 import {InputText, InputTextProps} from './components/input-text';
 import {YoutubePreview} from './components/youtube-preview';
-import {_fetch} from './api';
+import {_fetch, type ResponseType} from './api';
 import {TitleWithList} from './components/title-with-list';
-
-// export type AppProps = {
-//   test?: string;
-// };
 
 const INPUT_FIELD_THEME = 'coorpmanager';
 
 export const App: FunctionComponent = () => {
   const [videoUrl, setVideoUrl] = useState<string>('');
-  const [response, setResponse] = useState(null);
+  const [isClicked, setIsClicked] = useState(false);
+  const [response, setResponse] = useState<ResponseType>(null);
   const onUrlInput = useCallback((value: string) => setVideoUrl(value), []);
 
   // ----- url -----
@@ -34,13 +33,13 @@ export const App: FunctionComponent = () => {
   const generateButtonProps: ButtonProps = {
     label: 'Generate',
     onClick: async () => {
-      // eslint-disable-next-line no-console
-      console.log('videoUrl:', urlInputProps.value);
+      setIsClicked(true);
       try {
         const _response = await _fetch(
           `https://genai-metadata-back-production.up.railway.app/videos?video_url=${urlInputProps.value}`
         );
         setResponse(_response);
+        setIsClicked(false);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Failed to fetch the resource:', error);
@@ -50,7 +49,7 @@ export const App: FunctionComponent = () => {
 
   const exportButtonProps: ButtonProps = {
     label: 'Export to JSON file',
-    onClick: () => exportContentToJson()
+    onClick: () => exportContentToJson(response)
   };
 
   // ----- Basic section -----
@@ -61,7 +60,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Title',
     placeholder: 'The content title',
-    value: response.title
+    value: get('title', response)
   };
 
   // lower section
@@ -70,7 +69,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Language',
     placeholder: 'The language of the content',
-    value: response.language
+    value: get('language', response)
   };
 
   const succinctSummaryProps = {
@@ -79,7 +78,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Succinct Summary',
     placeholder: 'A succinct summary of the video',
-    value: response.summary
+    value: get('summary', response)
   };
 
   const socialsTeaserProps = {
@@ -88,7 +87,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Teaser for socials',
     placeholder: 'The teaser for social media publication',
-    value: response.teaser
+    value: get('teaser', response)
   };
 
   // Detailed summary
@@ -98,7 +97,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Detailed Summary',
     placeholder: 'Here, you can write a detailed summary for the content',
-    value: response.detailed_summary
+    value: get('detailed_summary', response)
   };
 
   const followUpsProps = {
@@ -107,7 +106,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Follow ups',
     placeholder: 'Useful resources to follow on learning',
-    value: response.followups
+    value: get('followups', response)
   };
 
   const assessmentsProps = {
@@ -116,7 +115,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Assessments',
     placeholder: 'Quiz ideas',
-    value: response.assessement
+    value: get('assessement', response)
   };
 
   const faqProps = {
@@ -125,7 +124,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'FAQ',
     // placeholder: 'Quiz ideas',
-    value: response.faq
+    value: get('faq', response)
   };
 
   const funFactsProps = {
@@ -134,7 +133,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Fun Facts',
     // placeholder: 'Quiz ideas',
-    value: response.fun_fact
+    value: get('fun_facts', response)
   };
 
   // const keyPhrasesProps: InputTextProps = {
@@ -165,7 +164,7 @@ export const App: FunctionComponent = () => {
           <div className={style.basicLowerSection}>
             <div className={style.imageContainer}>
               <img
-                src="https://placehold.co/256x256/png"
+                src={response.thumbnail}
                 alt="your image description"
                 className={style.contentImage}
               />
@@ -195,34 +194,22 @@ export const App: FunctionComponent = () => {
             <InputTextArea {...funFactsProps} />
           </div>
 
-          {/* <div className={style.keyPhrasesContainer}>
-            <InputTextArea {...followUpsProps} />
-          </div> */}
+          <TitleWithList title={'Acquired Skills'} list={response.acquired_skills} />
 
-          <TitleWithList title={'Acquired Skills'} list={['1st kp', '1st kp']} isSimpleText />
+          <TitleWithList title={'Key Phrases'} list={response.key_phrases} />
 
-          <TitleWithList title={'Key Phrases'} list={['1st kp', '1st kp']} />
-
-          <TitleWithList title={'Prerequisites'} list={['1st kp', '1st kp']} />
+          <TitleWithList title={'Prerequisites'} list={response.prerequisites} />
 
           <AppTitle title={'Glossary'} />
-          <Glossary
-            definitions={[
-              ['Test', 'This is a test'],
-              ['Test', 'This is a test'],
-              ['Test', 'This is a test'],
-              ['Test', 'This is a test'],
-              ['Another Test', 'This is another test']
-            ]}
-          />
+          <Glossary definitions={response.glossary} />
           <div />
           <div className={style.exportButtonContainer}>
             <Button {...exportButtonProps} />
           </div>
         </div>
-      ) : (
+      ) : isClicked ? (
         <div>
-          {/* <section>
+          <section>
             <div className={classnames(style.loading, style.loading01)}>
               <span>L</span>
               <span>O</span>
@@ -232,12 +219,12 @@ export const App: FunctionComponent = () => {
               <span>N</span>
               <span>G</span>
             </div>
-          </section> */}
+          </section>
           <div className={style.spinnerContainer}>
             <div className={style.spinner} />
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

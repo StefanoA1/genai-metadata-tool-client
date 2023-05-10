@@ -1,4 +1,7 @@
+import {type ResponseType} from '../src/api';
+
 // Fixtures
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const inputFixtures = {
   title:
     '"Mastering Machine Learning: A Comprehensive 7-Step Study Plan for Beginners with Python, Kaggle, and Andrew Ng\'s Machine Learning Specialization on Coursera"',
@@ -62,10 +65,7 @@ const inputFixtures = {
     'https://oaidalleapiprodscus.blob.core.windows.net/private/org-tci3RizVB8h2nVnLMmNOrgTo/user-6C1v0WlHzfz1sG44OIRldzPm/img-iyU1PCQpRbeNltHMjwhiwqVx.png?st=2023-05-10T07%3A24%3A40Z&se=2023-05-10T09%3A24%3A40Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-05-10T02%3A40%3A55Z&ske=2023-05-11T02%3A40%3A55Z&sks=b&skv=2021-08-06&sig=eHWwR2%2BASDt94045sccA/vvnlADlD/ciCrO0kScmAtg%3D'
 };
 
-export function exportContentToJson(
-  input: Record<string, unknown> = inputFixtures,
-  fileName = 'output.json'
-): void {
+export function exportContentToJson(input: ResponseType, fileName = 'output.json'): void {
   // eslint-disable-next-line no-console
   console.log('Exporting to JSON file');
   const jsonContent = JSON.stringify(input);

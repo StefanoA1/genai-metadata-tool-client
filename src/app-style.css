@@ -1,5 +1,6 @@
 @value colors: "./components/variables/colors.css";
 @value midnight_blue from colors;
+@value dark_blue from colors;
 
 .baseContainer {
   display: flex;
@@ -120,7 +121,7 @@
   display: grid;
   border: 4.5px solid #0000;
   border-radius: 50%;
-  border-color: #dbdcef #0000;
+  border-color: dark_blue #0000;
   animation: spinner-e04l1k 1s infinite linear;
 }
 
@@ -153,13 +154,14 @@
 /* common */
 .loading {
   font-size: 84px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
+  font-family: 'Gilroy';
+  /* font-weight: 800; */
   text-align: center;
+  color: midnight_blue;
 }
 .loading span {
   display: inline-block;
-  margin: 0 -.05em;
+  /* margin: 0 -.05em; */
 }
 
 /* code #1 */
