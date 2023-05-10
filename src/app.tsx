@@ -157,7 +157,7 @@ export const App: FunctionComponent = () => {
         </div>
       </div>
       <YoutubePreview videoUrl={urlInputProps.value} />
-      {result ? (
+      {response ? (
         <div className={style.basicSection}>
           <div>
             <InputText {...titleProps} />
