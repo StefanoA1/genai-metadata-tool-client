@@ -1,7 +1,6 @@
 import React, {type FunctionComponent, useCallback, useState} from 'react';
 import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
 import {exportContentToJson} from '../utils/export';
-// import InputText from '@coorpacademy/components/es/atom/input-text';
 import {AppTitle} from './components/app-title';
 import style from './app-style.css';
 import Button from './components/button';
@@ -37,7 +36,7 @@ export const App: FunctionComponent = () => {
   };
 
   const exportButtonProps: ButtonProps = {
-    label: 'Export',
+    label: 'Export to JSON file',
     onClick: () => exportContentToJson()
   };
 
@@ -100,6 +99,16 @@ export const App: FunctionComponent = () => {
       '1. Aurélien Géron - "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems" - O\'Reilly Media, 2019 - A practical guide for machine learning beginners and practitioners. https://www.goodreads.com/book/show/38886397-hands-on-machine-learning-with-scikit-learn-keras-and-tensorflow\n\n2. Andrew Ng - "Machine Learning Yearning" - Goodfellow Publishers, 2018 - A book that gives practical advice on how to implement a successful machine learning program'
   };
 
+  const assessmentsProps = {
+    theme: INPUT_FIELD_THEME,
+    disabled: true,
+    // onChange: onUrlInput,
+    title: 'Assessments',
+    placeholder: 'Quiz ideas',
+    value:
+      'Quiz:\n\n1. Knowing math is not necessary for machine learning.\n- False. Knowing the underlying math provides a better understanding of how the algorithms work and makes it easier to solve problems. Plus, math can add to the excitement of the topic.\n- Fun fact: Alan Turing was known for creating the concept of the Universal Machine, which was a mathematical notion that laid the foundation for computer science.\n\n'
+  };
+
   // const keyPhrasesProps: InputTextProps = {
   //   disabled: true,
   //   // onChange: onUrlInput,
@@ -130,7 +139,7 @@ export const App: FunctionComponent = () => {
           <div className={style.basicLowerSection}>
             <div className={style.imageContainer}>
               <img
-                src="https://placehold.co/256x256/png"
+                src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-tci3RizVB8h2nVnLMmNOrgTo/user-6C1v0WlHzfz1sG44OIRldzPm/img-WexNaUqLzdZ0XfyohGtUDEP6.png?st=2023-05-10T11%3A50%3A27Z&se=2023-05-10T13%3A50%3A27Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-05-10T02%3A35%3A46Z&ske=2023-05-11T02%3A35%3A46Z&sks=b&skv=2021-08-06&sig=tV95krjahS%2B%2BQJnFD9aSCqcRMME11g6TQAtIouX7szc%3D"
                 alt="your image description"
                 className={style.contentImage}
               />
@@ -148,6 +157,10 @@ export const App: FunctionComponent = () => {
             <InputTextArea {...followUpsProps} />
           </div>
 
+          <div className={style.assessmentsContainer}>
+            <InputTextArea {...assessmentsProps} />
+          </div>
+
           {/* <div className={style.keyPhrasesContainer}>
             <InputTextArea {...followUpsProps} />
           </div> */}
@@ -155,6 +168,9 @@ export const App: FunctionComponent = () => {
           <AppTitle title={'Glossary'} />
           <Glossary
             definitions={[
+              ['Test', 'This is a test'],
+              ['Test', 'This is a test'],
+              ['Test', 'This is a test'],
               ['Test', 'This is a test'],
               ['Another Test', 'This is another test']
             ]}
