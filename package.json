@@ -2,7 +2,7 @@
   "name": "genai-metadata-tool-client",
   "version": "0.0.1",
   "engines": {
-    "node": ">=16.20.0"
+    "node": ">=16.18.0"
   },
   "files": [
     "es",
