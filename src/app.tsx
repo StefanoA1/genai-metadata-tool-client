@@ -1,11 +1,13 @@
 import React, {type FunctionComponent, useCallback, useState} from 'react';
 import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
-import InputText from '@coorpacademy/components/es/atom/input-text';
 import {exportContentToJson} from '../utils/export';
+// import InputText from '@coorpacademy/components/es/atom/input-text';
 import {AppTitle} from './components/app-title';
 import style from './app-style.css';
 import Button from './components/button';
 import type {ButtonProps} from './components/button/types';
+import {Glossary} from './components/glossary';
+import {InputText} from './components/input-text';
 
 // export type AppProps = {
 //   test?: string;
@@ -92,7 +94,7 @@ export const App: FunctionComponent = () => {
 
   return (
     <div className={style.appContainer}>
-      <AppTitle title={'Video metadata enhancement tool'} isBigTitle />
+      <AppTitle title={'Turbo Learning'} isBigTitle />
       <div className={style.urlInputContainer}>
         <div className={style.inputWrapper}>
           <InputText {...urlInputProps} />
@@ -123,6 +125,13 @@ export const App: FunctionComponent = () => {
           <div className={style.detailedSummarySection}>
             <InputTextArea {...detailedSummaryProps} />
           </div>
+          <AppTitle title={'Glossary'} />
+          <Glossary
+            definitions={[
+              ['Test', 'This is a test'],
+              ['Another Test', 'This is another test']
+            ]}
+          />
           {/* <div className={style.preview}>
 
           </div> */}

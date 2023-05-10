@@ -1,0 +1,402 @@
+@value colors: "../variables/colors.css";
+@value orange from colors;
+@value negative from colors;
+@value light from colors;
+@value dark from colors;
+@value grey from colors;
+@value medium from colors;
+@value xtraLightGrey from colors;
+@value cm_positive_100 from colors;
+@value cm_negative_100 from colors;
+@value cm_grey_100 from colors;
+@value cm_grey_150 from colors;
+@value cm_grey_200 from colors;
+@value cm_grey_400 from colors;
+@value cm_grey_500 from colors;
+@value cm_grey_700 from colors;
+
+.default {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+}
+
+.error {
+  composes: default;
+}
+
+.modified {
+  composes: default;
+}
+
+.setup {
+}
+.cockpit {
+  position: relative;
+}
+.cockpit label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+}
+.cockpit input {
+  line-height: 35px;
+  height: 30px;
+  font-weight: normal;
+  background-color: transparent;
+  width: 100%;
+  font-weight: normal;
+  font-size: 14px;
+  font-family: 'Gilroy';
+  padding: 0 0 0 3px;
+  border: 0;
+  border-radius: 0px;
+  border-bottom: solid 0.5px rgba(0,0,0,0.12);
+  color: rgba(0,0,0,0.87);
+}
+.cockpit .description {
+  font-size: 12px;
+  opacity: 0%;
+  background-color: black;
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: 500;
+  color: white;
+  padding: 6px 8px;
+  display: block;
+  bottom: 65px;
+  left: 20px;
+  max-width: 380px;
+  transition: opacity 0.25s ease-in;
+}
+.cockpit .description:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+.cockpit label:hover ~* {
+  opacity: 80%;
+}
+.cockpit.error .title {
+  color: negative;
+}
+.cockpit.error .description:after {
+  border-color: negative transparent transparent transparent;
+}
+
+.cockpit.error .description {
+  background-color: negative;
+}
+
+.cockpit.error input,
+.cockpit.error input:focus,
+.cockpit.error input:hover {
+  border-bottom: solid 2px negative;
+  color: negative;
+}
+.cockpit input:focus,
+.cockpit input:hover{
+  outline: none;
+  border-bottom: solid 2px grey;
+}
+
+.cockpit .title {
+  color: #797979;
+  font-weight: bold;
+  font-family: 'Gilroy';
+  text-transform: capitalize;
+  font-size: 11px;
+  align-self: flex-start;
+  padding-left: 13px;
+}
+.default label {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  position: relative;
+  flex-grow: 0;
+  margin-right: 20px;
+}
+
+.title {
+  font-family: "Gilroy";
+  font-size: 15px;
+  text-transform: none;
+  color: dark;
+  width: 180px;
+}
+
+.input {
+  font-family: "Gilroy";
+  text-transform: none;
+  padding: 0 15px;
+  border: solid 1px light;
+  height: 50px;
+  border-radius: 2px;
+  font-size: 14px;
+  color: dark;
+  margin-left: 20px;
+  width: 230px;
+}
+
+.isNoTitle input {
+  margin-left: 0;
+}
+
+.isNoTitle .title {
+  display: none;
+}
+
+.isNoTitle .description {
+  margin-left: 8px;
+}
+
+.error .input {
+  border-color: negative;
+}
+
+.modified .input {
+  border-color: orange;
+}
+
+.description {
+  font-family: 'Gilroy';
+  font-weight: 500;
+  font-size: 12px;
+  color: medium;
+  font-style: italic;
+}
+/******************************* coorpmanager theme ***************************************/
+
+
+.coorpmanager {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.coorpmanager label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  height: 100%;
+}
+
+.coorpmanager .title {
+  flex-grow: 0;
+  font-family: Gilroy;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  z-index: 1;
+  color: cm_grey_400;
+  width: auto;
+  transition: all 0.25s linear;
+  pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: absolute;
+  top: 7px;
+  left: 16px;
+}
+
+.coorpmanager .title.noValue .infoIcon {
+  height: 10px;
+  width: 10px;
+  line-height: 12px;
+  color: cm_grey_500;
+}
+
+.coorpmanager label {
+  width: 100%;
+}
+
+.coorpmanager input {
+  width: 100%;
+  height: 44px;
+  margin: 0px;
+  flex-grow: 0;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 19px 30px 5px 16px;
+  border-radius: 7px;
+  background-color: cm_grey_100;
+  font-family: Gilroy;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 44px;
+  letter-spacing: normal;
+  text-align: left;
+  color: cm_grey_700;
+  border: none;
+  transition: all 0.25s linear;
+  outline: none;
+  display: flex;
+}
+
+.coorpmanager .title.noValue{
+  font-size: 14px;
+  font-weight: 500;
+  color: cm_grey_700;
+  top: 14px;
+}
+
+.coorpmanager:focus-within .title.noValue {
+  font-size: 10px;
+  font-weight: bold;
+  color: cm_grey_400;
+  top: 7px;
+}
+
+.coorpmanager:focus-within input::placeholder {
+  color: cm_grey_400;
+}
+
+.coorpmanager:focus-within .title.noValue .infoIcon {
+  width: 8px;
+  height: 8px;
+  line-height: 12px;
+  color: cm_grey_400;
+}
+
+.coorpmanager input:hover {
+  background-color: cm_grey_150;
+}
+
+.coorpmanager input::placeholder {
+  color: transparent;
+  transition: color 0.25s linear;
+}
+
+.coorpmanager .hint {
+  flex-grow: 0;
+  opacity: 0.5;
+  font-family: Gilroy;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  padding-top: 8px;
+  color: cm_grey_700;
+}
+
+.coorpmanager.error .hint {
+  color: cm_negative_100;
+}
+
+.coorpmanager.error .leftIcon {
+  background-color: cm_negative_100;
+  color: white;
+  border-radius: 50%;
+  padding: 2px;
+  width: 10px;
+  height: 10px;
+  right: 17px;
+  top: 14px;
+}
+
+.coorpmanager .leftIcon {
+  color: cm_positive_100;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  right: 16px;
+  top: 13px;
+}
+
+.coorpmanager.disabled {
+  opacity: 0.5;
+}
+
+.coorpmanager .infoIconWrapper {
+  overflow: visible;
+  height: 12px;
+  margin: 0px 4px;
+  cursor: pointer;
+  pointer-events: fill;
+  position: relative;
+}
+
+.coorpmanager .infoIcon {
+  cursor: pointer;
+  width: 8px;
+  height: 8px;
+  line-height: 16px;
+  color: cm_grey_400;
+  transition: all 0.25s linear;
+}
+
+.coorpmanager .infoIconWrapper:hover .descriptionLabel {
+  visibility: visible;
+  opacity: 1;
+}
+
+.coorpmanager .descriptionLabel {
+  margin: 0 1px 18px 0;
+  padding: 8px 16px;
+  border-radius: 7px;
+  background-color: cm_grey_700;
+  flex-grow: 0;
+  font-family: Gilroy;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+  padding: 8px 16px;
+  max-width: 200px;
+  position: absolute;
+  left: -24px;
+  z-index: 3;
+  bottom: 5px;
+  width: max-content;
+  visibility: hidden;
+  opacity: 0s
+}
+
+.coorpmanager .descriptionLabel::after{
+  content:'';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid cm_grey_700;
+  position: absolute;
+  bottom: -6px;
+  left: 21px;
+}
+.coorpmanager .title.noValue .descriptionLabel::after{
+  left: 22px;
+}
+.coorpmanager:focus-within .title.noValue .descriptionLabel::after{
+  left: 21px;
+}

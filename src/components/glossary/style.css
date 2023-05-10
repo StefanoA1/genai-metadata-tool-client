@@ -1,0 +1,11 @@
+.glossaryContainer {
+  display: flex;
+}
+
+.glossaryEntry {
+  padding-right: 15px;
+}
+
+/* .glossaryContainer:first-child {
+  padding-left: 10;
+} */
