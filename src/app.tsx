@@ -19,17 +19,16 @@ import {TitleWithList} from './components/title-with-list';
 const INPUT_FIELD_THEME = 'coorpmanager';
 
 export const App: FunctionComponent = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [videoUrl, setVideoUrl] = useState<string>('');
-  const [result, setResult] = useState(null);
+  const [response, setResponse] = useState(null);
   const onUrlInput = useCallback((value: string) => setVideoUrl(value), []);
 
   // ----- url -----
   const urlInputProps: InputTextProps = {
     onChange: onUrlInput,
     title: 'Video url',
-    placeholder: 'some.video.url/example123',
-    value: 'https://youtu.be/D8gpV-xjECM?t=52'
+    placeholder: 'Put your video URL here',
+    value: videoUrl
   };
 
   const generateButtonProps: ButtonProps = {
@@ -38,12 +37,10 @@ export const App: FunctionComponent = () => {
       // eslint-disable-next-line no-console
       console.log('videoUrl:', urlInputProps.value);
       try {
-        const response = await _fetch(
+        const _response = await _fetch(
           `https://genai-metadata-back-production.up.railway.app/videos?video_url=${urlInputProps.value}`
         );
-        // eslint-disable-next-line no-console
-        console.log('response:', response);
-        setResult(response);
+        setResponse(_response);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Failed to fetch the resource:', error);
@@ -64,7 +61,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Title',
     placeholder: 'The content title',
-    value: 'Some Title'
+    value: response.title
   };
 
   // lower section
@@ -73,7 +70,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Language',
     placeholder: 'The language of the content',
-    value: 'English'
+    value: response.language
   };
 
   const succinctSummaryProps = {
@@ -82,7 +79,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Succinct Summary',
     placeholder: 'A succinct summary of the video',
-    value: 'A really, concrete, non repetitive succinct summary'
+    value: response.summary
   };
 
   const socialsTeaserProps = {
@@ -91,7 +88,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Teaser for socials',
     placeholder: 'The teaser for social media publication',
-    value: 'Heads up! This teasers are trending!'
+    value: response.teaser
   };
 
   // Detailed summary
@@ -101,8 +98,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Detailed Summary',
     placeholder: 'Here, you can write a detailed summary for the content',
-    value:
-      "Vastness is bearable only through love Flatland billions upon billions Jean-François Champollion paroxysm of global death something incredible is waiting to be known? The sky calls to us dispassionate extraterrestrial observer realm of the galaxies made in the interiors of collapsing stars tingling of the spine tingling of the spine. Dream of the mind's eye two ghostly white figures in coveralls and helmets are softly dancing dream of the mind's eye are creatures of the cosmos two ghostly white figures in coveralls and helmets are softly dancing not a sunrise but a galaxyrise."
+    value: response.detailed_summary
   };
 
   const followUpsProps = {
@@ -111,8 +107,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Follow ups',
     placeholder: 'Useful resources to follow on learning',
-    value:
-      '1. Aurélien Géron - "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems" - O\'Reilly Media, 2019 - A practical guide for machine learning beginners and practitioners. https://www.goodreads.com/book/show/38886397-hands-on-machine-learning-with-scikit-learn-keras-and-tensorflow\n\n2. Andrew Ng - "Machine Learning Yearning" - Goodfellow Publishers, 2018 - A book that gives practical advice on how to implement a successful machine learning program'
+    value: response.followups
   };
 
   const assessmentsProps = {
@@ -121,8 +116,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Assessments',
     placeholder: 'Quiz ideas',
-    value:
-      'Quiz:\n\n1. Knowing math is not necessary for machine learning.\n- False. Knowing the underlying math provides a better understanding of how the algorithms work and makes it easier to solve problems. Plus, math can add to the excitement of the topic.\n- Fun fact: Alan Turing was known for creating the concept of the Universal Machine, which was a mathematical notion that laid the foundation for computer science.\n\n'
+    value: response.assessement
   };
 
   const faqProps = {
@@ -131,8 +125,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'FAQ',
     // placeholder: 'Quiz ideas',
-    value:
-      'Quiz:\n\n1. Knowing math is not necessary for machine learning.\n- False. Knowing the underlying math provides a better understanding of how the algorithms work and makes it easier to solve problems. Plus, math can add to the excitement of the topic.\n- Fun fact: Alan Turing was known for creating the concept of the Universal Machine, which was a mathematical notion that laid the foundation for computer science.\n\n'
+    value: response.faq
   };
 
   const funFactsProps = {
@@ -141,8 +134,7 @@ export const App: FunctionComponent = () => {
     // onChange: onUrlInput,
     title: 'Fun Facts',
     // placeholder: 'Quiz ideas',
-    value:
-      '1. Benjamin Franklin once said, "A small leak will sink a great ship." This applies to habits as well, as small, seemingly insignificant behaviors can add up over time and greatly impact our lives.\n\n2. According to a study, people who kept a food journal lost twice as much weight as those who didn\'t. This shows the power of keeping track of our habits and behaviors to improve them.\n\n3. The "mere-exposure effect" suggests that the more we are exposed to something, the more we like it. Applying this to habits, the more we expose ourselves to good habits, the more likely we are to enjoy and continue them.'
+    value: response.fun_fact
   };
 
   // const keyPhrasesProps: InputTextProps = {
