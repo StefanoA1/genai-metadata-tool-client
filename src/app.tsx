@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, {type FunctionComponent, useCallback, useState} from 'react';
+import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
 import classnames from 'classnames';
 import get from 'lodash/fp/get';
 import {exportContentToJson} from '../utils/export';
@@ -9,7 +10,7 @@ import Button from './components/button';
 import type {ButtonProps} from './components/button/types';
 import {Glossary} from './components/glossary';
 import {InputText, InputTextProps} from './components/input-text';
-import {InputTextarea as InputTextArea} from './components/input-textarea';
+// import {InputTextArea asInputTextArea} from './components/input-textarea';
 import {YoutubePreview} from './components/youtube-preview';
 import {_fetch, type ResponseType} from './api';
 import {TitleWithList} from './components/title-with-list';
