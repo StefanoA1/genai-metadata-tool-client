@@ -23,7 +23,7 @@
   "contributors": [
     "Stefano Acosta <stefanoacosta.92@gmail.com>",
     "Antonia Balluais <antonia.balluais@coorpacademy.com>",
-    "Faza Hamzaoui <faza.hamzaoui@coorpacademy.com>"
+    "Faza Hamzaoui <faza.binmus@gmail.com>"
   ],
   "author": "Stéfano Acosta",
   "dependencies": {
@@ -31,6 +31,7 @@
     "@coorpacademy/css-modules-require-hook": "^3.0.0",
     "classnames": "^2.3.2",
     "css-loader": "^6.7.1",
+    "lodash": "^4.17.21",
     "postcss-loader": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

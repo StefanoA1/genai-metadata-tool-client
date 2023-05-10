@@ -1,17 +1,21 @@
+@value colors: "../variables/colors.css";
+@value midnight_blue from colors;
+
 .toolTitle {
   font-family: Gilroy;
   font-style: normal;
   font-weight: bold;
-  color: #1D1D2B;
+  color: midnight_blue;
   padding-top: 20px;
   padding-bottom: 20px;
-  align-self: center;
 }
 
 .mainTitle {
   font-size: 20px;
+  align-self: center;
 }
 
 .regularTitle {
-  font-size: 20px;
+  font-size: 16px;
+  align-self: left;
 }

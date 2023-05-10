@@ -73,6 +73,12 @@
 @value box_shadow_orange_700: rgba(255, 84, 31, 0.15);
 @value light_blue: #ADC9F5;
 
-@value go1_backgound: #144953;
+@value go1_background: #144953;
 @value go1_primary: #D5FD42;
 @value go1_primary_hover: #BFE33B;
+
+@value go1_chelsea_cucumber: #74A44C;
+@value go1_hippie_green: #5D8C53;
+
+@value midnight_blue: #41729F;
+@value dark_blue: #274472;
