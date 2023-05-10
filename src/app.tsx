@@ -1,5 +1,6 @@
 import React, {type FunctionComponent, useCallback, useState} from 'react';
 import InputTextArea from '@coorpacademy/components/es/atom/input-textarea';
+// import classnames from 'classnames';
 import {exportContentToJson} from '../utils/export';
 import {AppTitle} from './components/app-title';
 import style from './app-style.css';
@@ -20,7 +21,7 @@ const INPUT_FIELD_THEME = 'coorpmanager';
 export const App: FunctionComponent = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [videoUrl, setVideoUrl] = useState<string>('');
-  const result = false;
+  const [result, setResult] = useState(null);
   const onUrlInput = useCallback((value: string) => setVideoUrl(value), []);
 
   // ----- url -----
@@ -42,6 +43,7 @@ export const App: FunctionComponent = () => {
         );
         // eslint-disable-next-line no-console
         console.log('response:', response);
+        setResult(response);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.error('Failed to fetch the resource:', error);
@@ -227,8 +229,21 @@ export const App: FunctionComponent = () => {
           </div>
         </div>
       ) : (
-        <div className={style.spinnerContainer}>
-          <div className={style.spinner} />
+        <div>
+          {/* <section>
+            <div className={classnames(style.loading, style.loading01)}>
+              <span>L</span>
+              <span>O</span>
+              <span>A</span>
+              <span>D</span>
+              <span>I</span>
+              <span>N</span>
+              <span>G</span>
+            </div>
+          </section> */}
+          <div className={style.spinnerContainer}>
+            <div className={style.spinner} />
+          </div>
         </div>
       )}
     </div>
