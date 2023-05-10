@@ -8,6 +8,11 @@ import Button from './components/button';
 import type {ButtonProps} from './components/button/types';
 import {Glossary} from './components/glossary';
 import {InputText, InputTextProps} from './components/input-text';
+import {YoutubePreview} from './components/youtube-preview';
+
+// export type AppProps = {
+//   test?: string;
+// };
 
 const INPUT_FIELD_THEME = 'coorpmanager';
 
@@ -32,8 +37,7 @@ export const App: FunctionComponent = () => {
   };
 
   const exportButtonProps: ButtonProps = {
-    label: 'Export to AirTable',
-
+    label: 'Export',
     onClick: () => exportContentToJson()
   };
 
@@ -117,6 +121,9 @@ export const App: FunctionComponent = () => {
       </div>
       {result ? (
         <div className={style.basicSection}>
+          <div>
+            <YoutubePreview videoUrl={urlInputProps.value} />
+          </div>
           <div>
             <InputText {...titleProps} />
           </div>
