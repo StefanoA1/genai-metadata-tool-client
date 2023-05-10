@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import {getClassState} from '../common';
 import style from './style.css';
 
-type InputTextProps = {
+export type InputTextProps = {
   autoFocus?: boolean;
   title: string;
   placeholder: string;
@@ -54,7 +54,7 @@ export const InputText: FunctionComponent<InputTextProps> = props => {
       className={classnames(
         mainClass,
         className,
-        disabled && style.disabled,
+        // disabled && style.disabled,
         isNil(propsTitle) && style.isNoTitle
       )}
     >

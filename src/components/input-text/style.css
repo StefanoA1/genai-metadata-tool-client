@@ -14,6 +14,7 @@
 @value cm_grey_400 from colors;
 @value cm_grey_500 from colors;
 @value cm_grey_700 from colors;
+@value midnight_blue from colors;
 
 .default {
   display: flex;
@@ -208,7 +209,7 @@
   letter-spacing: normal;
   text-align: left;
   z-index: 1;
-  color: cm_grey_400;
+  color: midnight_blue;
   width: auto;
   transition: all 0.25s linear;
   pointer-events: none;
