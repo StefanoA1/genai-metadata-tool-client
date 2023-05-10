@@ -1,6 +1,5 @@
 import React, {FunctionComponent, useMemo} from 'react';
 import {noop, isNil, isEmpty} from 'lodash/fp';
-
 import classnames from 'classnames';
 import {getClassState} from '../common';
 import style from './style.css';
